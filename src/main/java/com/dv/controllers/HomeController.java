@@ -36,8 +36,8 @@ public class HomeController {
     @ModelAttribute
     public void commAttrs(Model model) {
         model.addAttribute("tuyenXes", this.tuyenXeService.getTuyenXes());
-        model.addAttribute("xes", this.xeService.getXes());
-        model.addAttribute("taiXes", this.taiXeService.getTaiXes());
+        //model.addAttribute("xes", this.xeService.getXes());
+        //model.addAttribute("taiXes", this.taiXeService.getTaiXes());
 
     }
     

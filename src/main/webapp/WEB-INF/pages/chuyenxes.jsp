@@ -9,11 +9,11 @@
 <fmt:formatDate value="${chuyenXe.ngayGioKhoiHanh}" pattern="yyyy-MM-dd'T'HH:mm" var="formattedDate" />
 
 
-<h1 class="text-center text-primary mt-1">QUẢN LÝ CHUYEN XE</h1>
+<h1 class="text-center text-primary mt-1">QUẢN LÝ CHUYẾN XE</h1>
 <c:url value="/chuyenxes" var="action" />
 <c:if test="${errMsg != null}">
     <div class="alert alert-danger">
-        ${errMsg}
+        ${errMsg}s
     </div>
 </c:if>
 <form:form method="post" enctype="multipart/form-data" action="${action}" modelAttribute="chuyenXe">
@@ -60,36 +60,6 @@
         </form:select>
         <label for="tuyenXe" class="form-label">Tuyến Xe</label>
     </div>
-    <div class="form-floating mb-3 mt-3">
-        <form:select class="form-select" id="xe" path="xeId">
-            <c:forEach items="${xes}" var="c">
-                <c:choose>
-                    <c:when test="${c.id==chuyenXe.xeId.id}">
-                        <option value="${c.id}" selected>${c.soHieu}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${c.id}">${c.soHieu}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </form:select>
-        <label for="xe" class="form-label">Xe</label>
-    </div>
-    <div class="form-floating mb-3 mt-3">
-        <form:select class="form-select" id="taiXe" path="taiXeId">
-            <c:forEach items="${taiXes}" var="c">
-                <c:choose>
-                    <c:when test="${c.id==chuyenXe.taiXeId.id}">
-                        <option value="${c.id}" selected>${c.bangCap}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${c.id}">${c.bangCap}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </form:select>
-        <label for="taiXe" class="form-label">Tài Xế</label>
-    </div>
     
     <div class="mb-3 mt-3">
         <form:hidden path="id" />
@@ -101,7 +71,7 @@
                     <option value="${c.id}" selected>Cập nhật chuyến xe</option>
                 </c:when>
                 <c:otherwise>
-                    Thêm chuyến xe
+                    Cập nhật chuyến xe
                 </c:otherwise>
             </c:choose>
         </button>
