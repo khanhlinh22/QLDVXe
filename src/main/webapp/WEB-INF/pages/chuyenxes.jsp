@@ -71,7 +71,7 @@
                     <option value="${c.id}" selected>Cập nhật chuyến xe</option>
                 </c:when>
                 <c:otherwise>
-                    Cập nhật chuyến xe
+                    Thêm chuyến xe
                 </c:otherwise>
             </c:choose>
         </button>

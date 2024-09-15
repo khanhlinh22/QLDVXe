@@ -5,7 +5,7 @@
 package com.dv.pojo;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -96,11 +96,11 @@ public class NguoiDung implements Serializable {
     @Column(name = "role_name")
     private String roleName;
     @OneToMany(mappedBy = "nguoiDungNvId")
-    private Collection<NhanVien> nhanVienCollection;
+    private Set<NhanVien> nhanVienSet;
     @OneToMany(mappedBy = "nguoiDungKhId")
-    private Collection<KhachHang> khachHangCollection;
+    private Set<KhachHang> khachHangSet;
     @OneToMany(mappedBy = "nguoiDungTxId")
-    private Collection<TaiXe> taiXeCollection;
+    private Set<TaiXe> taiXeSet;
 
     public NguoiDung() {
     }
@@ -210,30 +210,30 @@ public class NguoiDung implements Serializable {
     }
 
     @XmlTransient
-    public Collection<NhanVien> getNhanVienCollection() {
-        return nhanVienCollection;
+    public Set<NhanVien> getNhanVienSet() {
+        return nhanVienSet;
     }
 
-    public void setNhanVienCollection(Collection<NhanVien> nhanVienCollection) {
-        this.nhanVienCollection = nhanVienCollection;
-    }
-
-    @XmlTransient
-    public Collection<KhachHang> getKhachHangCollection() {
-        return khachHangCollection;
-    }
-
-    public void setKhachHangCollection(Collection<KhachHang> khachHangCollection) {
-        this.khachHangCollection = khachHangCollection;
+    public void setNhanVienSet(Set<NhanVien> nhanVienSet) {
+        this.nhanVienSet = nhanVienSet;
     }
 
     @XmlTransient
-    public Collection<TaiXe> getTaiXeCollection() {
-        return taiXeCollection;
+    public Set<KhachHang> getKhachHangSet() {
+        return khachHangSet;
     }
 
-    public void setTaiXeCollection(Collection<TaiXe> taiXeCollection) {
-        this.taiXeCollection = taiXeCollection;
+    public void setKhachHangSet(Set<KhachHang> khachHangSet) {
+        this.khachHangSet = khachHangSet;
+    }
+
+    @XmlTransient
+    public Set<TaiXe> getTaiXeSet() {
+        return taiXeSet;
+    }
+
+    public void setTaiXeSet(Set<TaiXe> taiXeSet) {
+        this.taiXeSet = taiXeSet;
     }
 
     @Override

@@ -37,10 +37,10 @@ Author     : DELL
                     <th></th>
                     <th>Id</th>
                     <th>Tên tuyến</th>
-                    <th>Gía</th>
-                    <th>Ngày giờ khởi hành</th>
-                    <th>Số chỗ</th>
-                    <th>Loai xe</th>
+                    <th>Giá</th>
+                    <th>Ngày Giờ Khởi Hành</th>
+                    <th>Số Chỗ</th>
+                    <th>Trạng Thái</th>
                     <th></th>
                 </tr>
                 <c:forEach items="${chuyenXes}" var="cx">
@@ -53,6 +53,7 @@ Author     : DELL
                         <td>${String.format("%,.2f", cx.giaVe)} VND</td>
                         <td>${cx.ngayGioKhoiHanh}</td>
                         <td>${cx.soCho}</td>
+                        <td>${cx.trangThai}</td>
                         <td>
                             <c:url value="/chuyenxes/${cx.id}" var="u" />
                             <a href="${u}" class="btn btn-success">&orarr;</a>

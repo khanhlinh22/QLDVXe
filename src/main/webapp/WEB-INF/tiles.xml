@@ -20,23 +20,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="title" value="Trang chủ quản trị" />
         <put-attribute name="content" value="/WEB-INF/pages/index.jsp" />
     </definition>
-<!--    <definition name="tuyenxes" extends="baseLayout">
-        <put-attribute name="title" value="Trang xem tuyến xe" />
-        <put-attribute name="content" value="/WEB-INF/pages/tuyenxes.jsp" />
-    </definition>-->
-<!--    <definition name="hoatdongs" extends="baseLayout">
-        <put-attribute name="title" value="Trang hoạt động" />
-        <put-attribute name="content" value="/WEB-INF/pages/pagectsv.jsp" />
-    </definition>-->
+
     <definition name="chuyenxes" extends="baseLayout">
         <put-attribute name="title" value="Trang chủ chuyến xe" />
         <put-attribute name="content" value="/WEB-INF/pages/chuyenxes.jsp" />
     </definition>
-<!--   them phan nay vao trong -->
-<!--    <definition name="home" extends="baseLayout">
-        <put-attribute name="title" value="Trang xem chuyến xe" />
-        <put-attribute name="content" value="/WEB-INF/pages/chuyenxes.jsp" />
-    </definition>-->
+
     <definition name="login" extends="baseLayout">
         <put-attribute name="title" value="Đăng Nhập Admin" />
         <put-attribute name="content" value="/WEB-INF/pages/login.jsp" />

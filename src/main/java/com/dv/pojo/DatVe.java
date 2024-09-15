@@ -5,10 +5,9 @@
 package com.dv.pojo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,7 +56,7 @@ public class DatVe implements Serializable {
     private int soChoDat;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 13)
+    @Size(min = 1, max = 9)
     @Column(name = "trang_thai")
     private String trangThai;
     @JoinColumn(name = "chuyen_xe_dv_id", referencedColumnName = "id")
@@ -69,8 +68,8 @@ public class DatVe implements Serializable {
     @JoinColumn(name = "tuyen_xe_dv_id", referencedColumnName = "id")
     @ManyToOne
     private TuyenXe tuyenXeDvId;
-    @OneToMany(mappedBy = "datVeId", cascade = CascadeType.REMOVE)
-    private Collection<ThanhToan> thanhToanCollection;
+    @OneToMany(mappedBy = "datVeId")
+    private Set<ThanhToan> thanhToanSet;
 
     public DatVe() {
     }
@@ -142,12 +141,12 @@ public class DatVe implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ThanhToan> getThanhToanCollection() {
-        return thanhToanCollection;
+    public Set<ThanhToan> getThanhToanSet() {
+        return thanhToanSet;
     }
 
-    public void setThanhToanCollection(Collection<ThanhToan> thanhToanCollection) {
-        this.thanhToanCollection = thanhToanCollection;
+    public void setThanhToanSet(Set<ThanhToan> thanhToanSet) {
+        this.thanhToanSet = thanhToanSet;
     }
 
     @Override

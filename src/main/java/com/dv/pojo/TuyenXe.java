@@ -5,7 +5,7 @@
 package com.dv.pojo;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +46,7 @@ public class TuyenXe implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 100)
     @Column(name = "ten_tuyen")
     private String tenTuyen;
     @Basic(optional = false)
@@ -70,9 +70,9 @@ public class TuyenXe implements Serializable {
     @Column(name = "khoang_cach")
     private String khoangCach;
     @OneToMany(mappedBy = "tuyenXeDvId")
-    private Collection<DatVe> datVeCollection;
+    private Set<DatVe> datVeSet;
     @OneToMany(mappedBy = "tuyenXeId")
-    private Collection<ChuyenXe> chuyenXeCollection;
+    private Set<ChuyenXe> chuyenXeSet;
 
     public TuyenXe() {
     }
@@ -139,21 +139,21 @@ public class TuyenXe implements Serializable {
     }
 
     @XmlTransient
-    public Collection<DatVe> getDatVeCollection() {
-        return datVeCollection;
+    public Set<DatVe> getDatVeSet() {
+        return datVeSet;
     }
 
-    public void setDatVeCollection(Collection<DatVe> datVeCollection) {
-        this.datVeCollection = datVeCollection;
+    public void setDatVeSet(Set<DatVe> datVeSet) {
+        this.datVeSet = datVeSet;
     }
 
     @XmlTransient
-    public Collection<ChuyenXe> getChuyenXeCollection() {
-        return chuyenXeCollection;
+    public Set<ChuyenXe> getChuyenXeSet() {
+        return chuyenXeSet;
     }
 
-    public void setChuyenXeCollection(Collection<ChuyenXe> chuyenXeCollection) {
-        this.chuyenXeCollection = chuyenXeCollection;
+    public void setChuyenXeSet(Set<ChuyenXe> chuyenXeSet) {
+        this.chuyenXeSet = chuyenXeSet;
     }
 
     @Override

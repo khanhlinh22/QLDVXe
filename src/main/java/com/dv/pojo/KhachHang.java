@@ -5,7 +5,7 @@
 package com.dv.pojo;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class KhachHang implements Serializable {
     @ManyToOne
     private NguoiDung nguoiDungKhId;
     @OneToMany(mappedBy = "khachHangId")
-    private Collection<DatVe> datVeCollection;
+    private Set<DatVe> datVeSet;
 
     public KhachHang() {
     }
@@ -82,12 +82,12 @@ public class KhachHang implements Serializable {
     }
 
     @XmlTransient
-    public Collection<DatVe> getDatVeCollection() {
-        return datVeCollection;
+    public Set<DatVe> getDatVeSet() {
+        return datVeSet;
     }
 
-    public void setDatVeCollection(Collection<DatVe> datVeCollection) {
-        this.datVeCollection = datVeCollection;
+    public void setDatVeSet(Set<DatVe> datVeSet) {
+        this.datVeSet = datVeSet;
     }
 
     @Override

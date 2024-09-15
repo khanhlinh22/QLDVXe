@@ -47,7 +47,7 @@ UNLOCK TABLES;
 CREATE TABLE tuyen_xe
 (
 	`id` INT NOT NULL AUTO_INCREMENT ,
-   `ten_tuyen` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+   `ten_tuyen` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     `diem_di` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     `diem_den` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     `tan_suat` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -64,11 +64,11 @@ LOCK TABLES  `tuyen_xe` WRITE;
 /*!40000 ALTER TABLE  `tuyen_xe` DISABLE KEYS */;
 INSERT INTO tuyen_xe(ten_tuyen,diem_di,diem_den,tan_suat,khoang_cach)
 VALUES 
-('Tuyến 1', 'Bến xe Miền Tây', 'Bến xe Đà Lạt', '60 ', '310 km'),
-('Tuyến 2', 'Bến xe Miền Tây', 'Bến xe Sóc Trăng', '30', '222 km'),
-('Tuyến 3', 'Bến xe Miền Tây', 'Bến xe Châu Đốc', '30', '240 km'),
-('Tuyến 4', 'Bến xe Miền Tây', 'Bến xe Bạc Liêu', '60', '271 km'),
-('Tuyến 5', 'Bến xe Miền Tây', 'Bến xe Cà Mau ', '60', '302 km');
+('Tuyến Sài Gòn - Đà Lạt', 'Bến xe Miền Tây', 'Bến xe Đà Lạt', '60 ', '310 km'),
+('Tuyến Sài Gòn - Sóc Trăng', 'Bến xe Miền Tây', 'Bến xe Sóc Trăng', '30', '222 km'),
+('Tuyến Sài Gòn - Châu Đốc', 'Bến xe Miền Tây', 'Bến xe Châu Đốc', '30', '240 km'),
+('Tuyến Sài Gòn - Bạc Liêu', 'Bến xe Miền Tây', 'Bến xe Bạc Liêu', '60', '271 km'),
+('Tuyến Sài Gòn - Cà Mau', 'Bến xe Miền Tây', 'Bến xe Cà Mau ', '60', '302 km');
 /*!40000 ALTER TABLE  `tuyen_xe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,17 +130,17 @@ LOCK TABLES `nguoi_dung` WRITE;
 /*!40000 ALTER TABLE `nguoi_dung` DISABLE KEYS */;
 INSERT INTO nguoi_dung(ho,ten,username,password,email,CCCD,avatar,nam_sinh,SDT,role_name)
 VALUES 
-('Nguyễn', 'Văn A', 'nguyenvana', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vana@gmail.com', '123456789012', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1990, '0912345678', 'ADMIN'),
-('Trần', 'Thị B', 'tranthib', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thib@gmail.com', '123456789013', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1992, '0912345679', 'KHACHHANG'),
-('Lê', 'Văn C', 'levanc', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vanc@gmail.com', '123456789014', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1988, '0912345680', 'KHACHHANG'),
-('Phạm', 'Thị D', 'phamthid', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thid@gmail.com', '123456789015', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1995, '0912345681', 'NHANVIEN'),
-('Trần', 'Văn E', 'vovane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vane@gmail.com', '123456789016', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'NHANVIEN'),
-('Hà', 'Văn E', 'havane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'hane@gmail.com', '123456789017','https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'NHANVIEN'),
-('Huỳnh', 'Văn E', 'huynhvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'huynhvane@gmail.com', '123456789018', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'NHANVIEN'),
-('Vũ', 'Văn E', 'vuvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vuvane@gmail.com', '123456789019', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'NHANVIEN'),
-('Diệp', 'Văn E', 'diepvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'diepvane@gmail.com', '123456789010', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'NHANVIEN'),
-('Di', 'Văn E', 'divane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'divane@gmail.com', '123456789021', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'TAIXE'),
-('Dư', 'Văn E', 'duvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'duvane@gmail.com', '123456789022', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726050711/download_1_xc0vfx.jpg', 1993, '0912345682', 'TAIXE');
+('Nguyễn', 'Văn A', 'nguyenvana', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vana@gmail.com', '123456789012', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1990, '0912345678', 'ADMIN'),
+('Trần', 'Thị B', 'tranthib', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thib@gmail.com', '123456789013', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1992, '0912345679', 'KHACHHANG'),
+('Lê', 'Văn C', 'levanc', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vanc@gmail.com', '123456789014', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1988, '0912345680', 'KHACHHANG'),
+('Phạm', 'Thị D', 'phamthid', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thid@gmail.com', '123456789015', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1995, '0912345681', 'NHANVIEN'),
+('Trần', 'Văn E', 'vovane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vane@gmail.com', '123456789016', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'NHANVIEN'),
+('Hà', 'Văn E', 'havane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'hane@gmail.com', '123456789017','https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'NHANVIEN'),
+('Huỳnh', 'Văn E', 'huynhvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'huynhvane@gmail.com', '123456789018', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'NHANVIEN'),
+('Vũ', 'Văn E', 'vuvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vuvane@gmail.com', '123456789019', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'NHANVIEN'),
+('Diệp', 'Văn E', 'diepvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'diepvane@gmail.com', '123456789010', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'NHANVIEN'),
+('Di', 'Văn E', 'divane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'divane@gmail.com', '123456789021', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'TAIXE'),
+('Dư', 'Văn E', 'duvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'duvane@gmail.com', '123456789022', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'TAIXE');
 /*!40000 ALTER TABLE  `nguoi_dung` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +246,7 @@ CREATE TABLE `chuyen_xe`
     `ngay_gio_khoi_hanh` DATETIME DEFAULT NULL,
     `gia_ve` DECIMAL(10, 2) NOT NULL,
     `so_cho` INT NOT  NULL,
-    `trang_thai` ENUM('Đang hoạt động', 'Đã hoàn thành', 'Hủy') NOT NULL,
+    `trang_thai` ENUM('Active', 'Completed', 'Cancelled') NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `tuyen_xe_id` (`tuyen_xe_id`),
 	CONSTRAINT `tuyen_xe_idfk_1` FOREIGN KEY (`tuyen_xe_id`) REFERENCES `tuyen_xe` (`id`) 
@@ -260,9 +260,9 @@ LOCK TABLES `chuyen_xe` WRITE;
 /*!40000 ALTER TABLE `chuyen_xe` DISABLE KEYS */;
 INSERT INTO chuyen_xe (tuyen_xe_id, ngay_gio_khoi_hanh, gia_ve, so_cho,image, trang_thai) 
 VALUES 
-(1,  '2024-08-30 08:00:00', 150000, 30, 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg','Đang hoạt động'),
-(2,  '2024-08-30 09:00:00', 200000, 40,'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 'Đã hoàn thành'),
-(3,  '2024-08-31 07:00:00', 170000, 35,'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 'Hủy');
+(1,  '2024-08-30 08:00:00', 150000, 30, 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726427104/dc5e8f88-4378-4e34-b6e5-442b89c366e9_yhkhap.jpg','Active'),
+(2,  '2024-08-30 09:00:00', 200000, 40,'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726427104/dc5e8f88-4378-4e34-b6e5-442b89c366e9_yhkhap.jpg', 'Completed'),
+(3,  '2024-08-31 07:00:00', 170000, 35,'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726427104/dc5e8f88-4378-4e34-b6e5-442b89c366e9_yhkhap.jpg', 'Cancelled');
 /*!40000 ALTER TABLE  `chuyen_xe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +305,7 @@ CREATE TABLE `dat_ve`
 	`id` INT NOT NULL AUTO_INCREMENT ,
     `ngay_dat` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `so_cho_dat` INT NOT NULL,
-    `trang_thai` ENUM('Đã đặt', 'Đã thanh toán','Hủy') NOT  NULL,
+    `trang_thai` ENUM('Paid', 'Cancelled') NOT  NULL,
      `chuyen_xe_dv_id` INT,
     `khach_hang_id` INT,
     `tuyen_xe_dv_id` INT,
@@ -327,11 +327,11 @@ LOCK TABLES `dat_ve` WRITE;
 /*!40000 ALTER TABLE `dat_ve` DISABLE KEYS */;
 INSERT INTO dat_ve (ngay_dat, so_cho_dat, trang_thai, chuyen_xe_dv_id, khach_hang_id, tuyen_xe_dv_id)
 VALUES 
-('2024-08-25 14:30:00', 2, 'Đã đặt', 1, 1,1),
-('2024-08-25 15:00:00', 1, 'Đã thanh toán', 2, 2,1),
-('2024-08-25 16:00:00', 3, 'Đã đặt', 3, 1,2),
-('2024-08-26 09:30:00', 1, 'Hủy', 1, 2,2),
-('2024-08-26 10:00:00', 2, 'Đã thanh toán', 2,1,1);
+('2024-08-25 14:30:00', 2, 'Paid', 1, 1,1),
+('2024-08-25 15:00:00', 1, 'Paid', 2, 2,1),
+('2024-08-25 16:00:00', 3, 'Cancelled', 3, 1,2),
+('2024-08-26 09:30:00', 1, 'Cancelled', 1, 2,2),
+('2024-08-26 10:00:00', 2, 'Paid', 2,1,1);
 /*!40000 ALTER TABLE  `dat_ve` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +344,7 @@ CREATE TABLE `thanh_toan`
 	`id` INT NOT NULL AUTO_INCREMENT,
     `so_tien` DECIMAL(10, 2) NOT NULL,
     `ngay_thanh_toan` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `hinh_thuc_thanh_toan`  ENUM('Tiền mặt', 'Chuyển khoản', 'Thẻ tín dụng') NOT NULL,
+    `hinh_thuc_thanh_toan`  ENUM('CASH', 'BANK', 'CREDIT') NOT NULL,
 	`dat_ve_id` INT,
     PRIMARY KEY (id),
 	KEY `dat_ve_id` (`dat_ve_id`),
@@ -359,11 +359,11 @@ LOCK TABLES `thanh_toan` WRITE;
 /*!40000 ALTER TABLE `thanh_toan` DISABLE KEYS */;
 INSERT INTO thanh_toan (dat_ve_id, so_tien, ngay_thanh_toan, hinh_thuc_thanh_toan)
 VALUES
-    (1, 500000.00, '2024-08-25 17:00:00', 'Tiền mặt'),
-    (2, 250000.00, '2024-08-25 18:00:00', 'Chuyển khoản'),
-    (3, 750000.00, '2024-08-26 09:00:00', 'Thẻ tín dụng'),
-    (4, 100000.00, '2024-08-26 10:30:00', 'Tiền mặt'),
-    (1, 600000.00, '2024-08-26 11:00:00', 'Chuyển khoản');
+    (1, 500000.00, '2024-08-25 17:00:00', 'CASH'),
+    (2, 250000.00, '2024-08-25 18:00:00', 'BANK'),
+    (3, 750000.00, '2024-08-26 09:00:00', 'CREDIT'),
+    (4, 100000.00, '2024-08-26 10:30:00', 'CASH'),
+    (1, 600000.00, '2024-08-26 11:00:00', 'BANK');
  /*!40000 ALTER TABLE  `thanh_toan` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -14,12 +14,12 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-                <c:forEach items="${tuyenxes}" var="c">
+                <c:forEach items="${chuyenxes}" var="c">
                     <li class="nav-item">
                         <c:url var="myUrl" value="/">
-                            <c:param name="tuyenXeId" value="${c.id}"/>
+                            <c:param name="chuyenXeId" value="${c.id}"/>
                         </c:url>
-                        <a class="nav-link" href="${myUrl}">Tuyến Xe ${c.tuyenxe}</a>
+                        <a class="nav-link" href="${myUrl}">Chuyen xe ${c.chuyenxe}</a>
                     </li> 
                 </c:forEach>
                 <li class="nav-item dropdown">

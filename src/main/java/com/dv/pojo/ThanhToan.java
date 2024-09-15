@@ -55,7 +55,7 @@ public class ThanhToan implements Serializable {
     private Date ngayThanhToan;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 12)
+    @Size(min = 1, max = 6)
     @Column(name = "hinh_thuc_thanh_toan")
     private String hinhThucThanhToan;
     @JoinColumn(name = "dat_ve_id", referencedColumnName = "id")

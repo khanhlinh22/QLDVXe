@@ -6,8 +6,8 @@ package com.dv.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -72,17 +72,18 @@ public class ChuyenXe implements Serializable {
     private int soCho;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 14)
+    @Size(min = 1, max = 9)
     @Column(name = "trang_thai")
     private String trangThai;
-    @OneToMany(mappedBy = "chuyenXeDvId", cascade = CascadeType.REMOVE)
-    private Collection<DatVe> datVeCollection;
-    @OneToMany(mappedBy = "chuyenXeId", cascade = CascadeType.REMOVE)
-    private Collection<LichTrinh> lichTrinhCollection;
+    @OneToMany(mappedBy = "chuyenXeDvId", cascade=CascadeType.REMOVE)
+    private Set<DatVe> datVeSet;
+    @OneToMany(mappedBy = "chuyenXeId", cascade=CascadeType.REMOVE)
+    private Set<LichTrinh> lichTrinhSet;
     @JoinColumn(name = "tuyen_xe_id", referencedColumnName = "id")
     @ManyToOne
     private TuyenXe tuyenXeId;
-@Transient
+
+    @Transient
     private MultipartFile file;
     public ChuyenXe() {
     }
@@ -147,21 +148,21 @@ public class ChuyenXe implements Serializable {
     }
 
     @XmlTransient
-    public Collection<DatVe> getDatVeCollection() {
-        return datVeCollection;
+    public Set<DatVe> getDatVeSet() {
+        return datVeSet;
     }
 
-    public void setDatVeCollection(Collection<DatVe> datVeCollection) {
-        this.datVeCollection = datVeCollection;
+    public void setDatVeSet(Set<DatVe> datVeSet) {
+        this.datVeSet = datVeSet;
     }
 
     @XmlTransient
-    public Collection<LichTrinh> getLichTrinhCollection() {
-        return lichTrinhCollection;
+    public Set<LichTrinh> getLichTrinhSet() {
+        return lichTrinhSet;
     }
 
-    public void setLichTrinhCollection(Collection<LichTrinh> lichTrinhCollection) {
-        this.lichTrinhCollection = lichTrinhCollection;
+    public void setLichTrinhSet(Set<LichTrinh> lichTrinhSet) {
+        this.lichTrinhSet = lichTrinhSet;
     }
 
     public TuyenXe getTuyenXeId() {
