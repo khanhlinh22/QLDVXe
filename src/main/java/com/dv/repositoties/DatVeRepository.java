@@ -4,14 +4,13 @@
  */
 package com.dv.repositoties;
 
-import com.dv.pojo.TuyenXe;
+import com.dv.pojo.DatVe;
 import java.util.List;
 
 /**
  *
  * @author ADMIN
  */
-public interface TuyenXeRepository {
-      List<TuyenXe> getTuyenXes();
-     
+public interface DatVeRepository {
+    List<DatVe> getDatVes();
 }

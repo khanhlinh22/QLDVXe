@@ -8,7 +8,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.12.v20230209-rNA", date="2024-09-17T17:23:23")
+@Generated(value="EclipseLink-2.7.12.v20230209-rNA", date="2024-09-18T02:38:25")
 @StaticMetamodel(NguoiDung.class)
 public class NguoiDung_ { 
 

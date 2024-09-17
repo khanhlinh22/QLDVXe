@@ -29,7 +29,7 @@ public class ChuyenXeController {
     @Autowired
     private ChuyenXeService chuyenXeService;
 
-    @GetMapping("/chuyenxes")
+    @GetMapping("/admin/chuyenxes")
     public String createView(Model model) {
         model.addAttribute("chuyenXe", new ChuyenXe());
         model.addAttribute("trangThaiList", TrangThai.values()); // Pass enum values to the JSP
@@ -37,7 +37,7 @@ public class ChuyenXeController {
         return "chuyenxes";
     }
 
-    @PostMapping("/chuyenxes")
+    @PostMapping("/admin/chuyenxes")
     public String createView(Model model,
             @ModelAttribute(value = "chuyenXe") @Valid ChuyenXe cx,
             BindingResult rs) {
@@ -56,7 +56,7 @@ public class ChuyenXeController {
         return "chuyenxes";
     }
 
-    @GetMapping("/chuyenxes/{chuyenXeId}")
+    @GetMapping("/admin/chuyenxes/{chuyenXeId}")
     public String detailsView(Model model, @PathVariable(value = "chuyenXeId") int id) {
         model.addAttribute("chuyenXe", this.chuyenXeService.getChuyenXeById(id));
         List<TrangThai> trangThaiList = Arrays.asList(TrangThai.values());

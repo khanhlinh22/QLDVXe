@@ -4,11 +4,12 @@
  */
 package com.dv.services.impl;
 
+import com.dv.pojo.DatVe;
 import com.dv.pojo.TuyenXe;
+import com.dv.repositoties.DatVeRepository;
 import com.dv.repositoties.TuyenXeRepository;
-import com.dv.services.TuyenXeService;
+import com.dv.services.DatVeService;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +18,11 @@ import org.springframework.stereotype.Service;
  * @author ADMIN
  */
 @Service
-public class TuyenXeServiceImpl implements TuyenXeService {
-    @Autowired
-    private TuyenXeRepository  tuyenXeRepo ;
+public class DatVeServiceImpl implements DatVeService{
+     @Autowired
+    private DatVeRepository  datVeRepo ;
     @Override
-    public List<TuyenXe> getTuyenXes() {
-        return this.tuyenXeRepo.getTuyenXes();
+    public List<DatVe> getDatVes() {
+        return this.datVeRepo.getDatVes();
     }
-
-   
-
-   
 }

@@ -6,6 +6,8 @@ Author     : DELL
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <section class="container">
     <h1 class="text-center text-info m-1">DANH MỤC CHUYẾN XE</h1>
@@ -28,12 +30,16 @@ Author     : DELL
             </form>
         </div>
         <div class="col-md-10 col-12">
-           
-            
-                 <div>
-                    <a class="btn btn-info m-1" href="<c:url value="/chuyenxes" />">Thêm chuyến xe</a>              
+
+
+
+            <sec:authorize access="hasRole('ADMIN')">
+                <div>
+                    <a class="btn btn-info m-1" href="<c:url value='/admin/chuyenxes' />">Thêm chuyến xe</a>              
                 </div>
-              
+            </sec:authorize>
+
+
 
             <table class="table table-striped">
                 <tr>
@@ -57,17 +63,22 @@ Author     : DELL
                         <td>${cx.ngayGioKhoiHanh}</td>
                         <td>${cx.soCho}</td>
                         <td>${cx.trangThai}</td>
-                        <td>
-                            <c:url value="/chuyenxes/${cx.id}" var="u" />
-                            <a href="${u}" class="btn btn-success">&orarr;</a>
-
+                        <td>    
+                            <c:url value="/admin/chuyenxes/${cx.id}" var="u" />
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <a href="${u}" class="btn btn-success">&orarr;</a>
+                            </sec:authorize>
                             <c:url value="/api/chuyenxes/${cx.id}" var="uD" />
-                            <button onclick="deleteChuyenXe('${uD}', ${cx.id})" class="btn btn-danger">&times;</button>
+
+                            <!-- Use sec:authorize to conditionally display the button based on role -->
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <button onclick="deleteChuyenXe('${uD}', ${cx.id})" class="btn btn-danger">&times;</button>
+                            </sec:authorize>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
     </div>
-</section
+</section>
 

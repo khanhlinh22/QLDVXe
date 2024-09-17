@@ -4,14 +4,13 @@
  */
 package com.dv.repositoties;
 
-import com.dv.pojo.TuyenXe;
 import java.util.List;
 
 /**
  *
  * @author ADMIN
  */
-public interface TuyenXeRepository {
-      List<TuyenXe> getTuyenXes();
-     
+public interface StatsRepository {
+    List<Object[]> statsRevenueByChuyenXe();
+    List<Object[]> statsRevenueByPeroid(int year, String peroid);
 }

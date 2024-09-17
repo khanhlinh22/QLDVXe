@@ -46,10 +46,10 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "NguoiDung.findByRoleName", query = "SELECT n FROM NguoiDung n WHERE n.roleName = :roleName")})
 public class NguoiDung implements Serializable {
 
-    public static final String ADMIN = "ADMIN";
-    public static final String NHANVIEN = "NHANVIEN";
-    public static final String KHACHHANG = "KHACHHANG";
-    public static final String TAIXE = "TAIXE";
+    public static final String ADMIN = "ROLE_ADMIN";
+    public static final String NHANVIEN = "ROLE_NHANVIEN";
+    public static final String KHACHHANG = "ROLE_KHACHHANG";
+    public static final String TAIXE = "ROLE_TAIXE";
 
     /**
      * @return the confirmPassword

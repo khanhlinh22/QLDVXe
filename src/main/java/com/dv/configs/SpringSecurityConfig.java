@@ -31,15 +31,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     "com.dv.services"
 })
 
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
-     @Autowired
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
     public Cloudinary cloudinary() {
         Cloudinary cloudinary
@@ -62,18 +63,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
             throws Exception {
         http.formLogin().usernameParameter("username").passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
-        
-        http.logout().logoutSuccessUrl("/login");
-        
-        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
-        
-//        http.authorizeRequests().antMatchers("/").permitAll()
-//                .antMatchers("/admin/**").access("hasRole('ADMIN')");
-//         http.authorizeRequests()
-//        .antMatchers("/", "/public/**", "/login", "/register").permitAll() // Allow access to these URLs without authentication
-//        .antMatchers("/admin/**").hasRole("ADMIN") // Protect /admin/** URLs to only allow ADMIN role
-//        .anyRequest().authenticated(); // Require authentication for any other requests
 
+        http.logout().logoutSuccessUrl("/login");
+        //Kiem tra loi
+        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+
+        
+       
         http.csrf().disable();
     }
 }

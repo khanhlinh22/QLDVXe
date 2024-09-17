@@ -4,11 +4,9 @@
  */
 package com.dv.repositories.impl;
 
-import com.dv.pojo.TuyenXe;
-import com.dv.repositoties.TuyenXeRepository;
+import com.dv.pojo.DatVe;
+import com.dv.repositoties.DatVeRepository;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,23 +21,18 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class TuyenXeRepositoryImpl implements TuyenXeRepository {
+public class DatVeRepositoryImpl implements DatVeRepository {
 
     @Autowired
     private Environment env;
 
     @Autowired
     private LocalSessionFactoryBean factory;
-     @PersistenceContext
-    private EntityManager entityManager;
 
     @Override
-    public List<TuyenXe> getTuyenXes() {
+    public List<DatVe> getDatVes() {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("From TuyenXe");
+        Query q = s.createNamedQuery("DatVe.findAll");
         return q.getResultList();
     }
-
-   
-
 }

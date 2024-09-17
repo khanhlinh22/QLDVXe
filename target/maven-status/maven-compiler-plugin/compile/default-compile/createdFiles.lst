@@ -1,3 +1,4 @@
+com\dv\repositoties\StatsRepository.class
 com\dv\repositoties\TuyenXeRepository.class
 com\dv\pojo\ThanhToan_.class
 com\dv\pojo\KhachHang_.class
@@ -21,6 +22,7 @@ com\dv\configs\WebApplicationContextConfig.class
 com\dv\enums\TrangThai.class
 com\dv\pojo\TaiXe.class
 com\dv\services\TaiXeService.class
+com\dv\repositories\impl\DatVeRepositoryImpl.class
 com\dv\configs\DispatcherServeletInit.class
 com\dv\controllers\ChuyenXeController.class
 com\dv\pojo\LichTrinh.class
@@ -30,11 +32,15 @@ com\dv\repositories\impl\TuyenXeRepositoryImpl.class
 com\dv\pojo\TuyenXe_.class
 com\dv\pojo\ChuyenXe_.class
 com\dv\repositoties\NguoiDungRepository.class
+com\dv\services\impl\DatVeServiceImpl.class
+com\dv\services\DatVeService.class
 com\dv\pojo\ThongKe.class
+com\dv\repositoties\DatVeRepository.class
 com\dv\services\ChuyenXeService.class
 com\dv\configs\SecurityWebAppInitializer.class
 com\dv\services\XeService.class
 com\dv\formatters\TaiXeFormatter.class
+com\dv\repositories\impl\StatsRepositoryImpl.class
 com\dv\pojo\NhanVien_.class
 com\dv\formatters\TuyenXeFormatter.class
 com\dv\pojo\TuyenXe.class
@@ -49,9 +55,12 @@ com\dv\services\TuyenXeService.class
 com\dv\pojo\TaiXe_.class
 com\dv\controllers\ApiChuyenXeController.class
 com\dv\controllers\NguoiDungController.class
+com\dv\services\StatsService.class
 com\dv\pojo\NhanVien.class
 com\dv\pojo\NguoiDung_.class
 com\dv\repositories\impl\ChuyenXeRepositoryImpl.class
 com\dv\services\impl\TuyenXeServiceImpl.class
 com\dv\configs\SpringSecurityConfig.class
 com\dv\configs\HibernateConfig.class
+com\dv\controllers\StatsController.class
+com\dv\services\impl\StatsServiceImpl.class
