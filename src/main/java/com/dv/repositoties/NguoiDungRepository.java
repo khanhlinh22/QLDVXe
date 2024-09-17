@@ -13,9 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @author ADMIN
  */
 public interface NguoiDungRepository extends UserDetailsService{
-     NguoiDung getNguoiDungByUsername(String username);
+    NguoiDung getNguoiDungByUsername(String username);
     boolean addUser(NguoiDung nguoiDung);
-    //Lay nguoi dung truyen keywork username de tra ra danh sach
     List<NguoiDung> getUsers(String username);
     void addNguoiDung(NguoiDung nd);
 }

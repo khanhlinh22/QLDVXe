@@ -4,12 +4,18 @@
  */
 package com.dv.services.impl;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.dv.pojo.NguoiDung;
 import com.dv.repositoties.NguoiDungRepository;
 import com.dv.services.NguoiDungService;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,19 +29,32 @@ import org.springframework.stereotype.Service;
  * @author ADMIN
  */
 @Service("userDetailsService")
-public class NguoiDungServiceImpl implements NguoiDungService{
-     @Autowired
+public class NguoiDungServiceImpl implements NguoiDungService {
+
+    @Autowired
     private NguoiDungRepository nguoiDungRepo;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
+ @Autowired
+    private Cloudinary cloudinary;
     @Override
     public boolean addUser(NguoiDung nguoiDung) {
         String pass = nguoiDung.getPassword();
         nguoiDung.setPassword(this.passwordEncoder.encode(pass));
+        nguoiDung.setRoleName(NguoiDung.KHACHHANG);
+        if (!nguoiDung.getFile().isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(nguoiDung.getFile().getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+
+                nguoiDung.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(NguoiDungServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 //        nguoiDung.setPassword(NguoiDung.USER);
         return this.nguoiDungRepo.addUser(nguoiDung);
-        
+
     }
 
     @Override
@@ -45,15 +64,15 @@ public class NguoiDungServiceImpl implements NguoiDungService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-           List<NguoiDung> nguoiDungs = this.getUsers(username);
-        if(nguoiDungs.isEmpty())
+        List<NguoiDung> nguoiDungs = this.getUsers(username);
+        if (nguoiDungs.isEmpty()) {
             throw new UsernameNotFoundException("User khong ton tai");
+        }
         NguoiDung nguoiDung = nguoiDungs.get(0);
         Set<GrantedAuthority> auth = new HashSet<>();
         auth.add(new SimpleGrantedAuthority(nguoiDung.getRoleName()));
         return new org.springframework.security.core.userdetails.User(nguoiDung.getUsername(), nguoiDung.getPassword(), auth);
     }
-    
 
     @Override
     public NguoiDung getNguoiDungByUsername(String username) {

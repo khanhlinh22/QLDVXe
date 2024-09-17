@@ -16,6 +16,7 @@
         ${errMsg}s
     </div>
 </c:if>
+
 <form:form method="post" enctype="multipart/form-data" action="${action}" modelAttribute="chuyenXe">
     <form:errors path="*" element="div" cssClass="alert alert-danger" />
 

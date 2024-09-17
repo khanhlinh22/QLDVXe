@@ -5,7 +5,7 @@ Author     : DELL
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <section class="container">
     <h1 class="text-center text-info m-1">DANH MỤC CHUYẾN XE</h1>
@@ -13,10 +13,7 @@ Author     : DELL
         <div class="col-md-2 col-12 bg-secondary">
             <c:url value="/" var="action" />
             <form action="${action}">
-                <div class="mb-3 mt-3">
-                    <label for="kw" class="form-label">Từ khóa:</label>
-                    <input type="text" class="form-control" id="kw" placeholder="Từ khóa..." name="q">
-                </div>
+
                 <div class="mb-3 mt-3">
                     <label for="fromPrice" class="form-label">Từ giá (VNĐ):</label>
                     <input type="number" class="form-control" id="fromPrice" placeholder="Từ giá..." name="fromPrice">
@@ -31,7 +28,13 @@ Author     : DELL
             </form>
         </div>
         <div class="col-md-10 col-12">
-            <a class="btn btn-info m-1" href="<c:url value="/chuyenxes" />">Thêm chuyến xe</a>
+           
+            
+                 <div>
+                    <a class="btn btn-info m-1" href="<c:url value="/chuyenxes" />">Thêm chuyến xe</a>              
+                </div>
+              
+
             <table class="table table-striped">
                 <tr>
                     <th></th>

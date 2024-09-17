@@ -5,6 +5,7 @@
 package com.dv.repositories.impl;
 
 import com.dv.pojo.ChuyenXe;
+import com.dv.pojo.TuyenXe;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.dv.repositoties.ChuyenXeRepository;
 import java.util.ArrayList;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
@@ -46,23 +48,18 @@ public class ChuyenXeRepositoryImpl implements ChuyenXeRepository {
 
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
-            String kw = params.get("q");
-            if (kw != null && !kw.isEmpty()) {
-                Predicate p1 = b.like(root.get("name"), String.format("%%%s%%", kw));
-                predicates.add(p1);
+
+            String fromPrice = params.get("fromPrice");
+            if (fromPrice != null && !fromPrice.isEmpty()) {
+                Predicate p2 = b.greaterThanOrEqualTo(root.get("giaVe"), Double.parseDouble(fromPrice));
+                predicates.add(p2);
             }
 
-//            String fromPrice = params.get("fromPrice");
-//            if (fromPrice != null && !fromPrice.isEmpty()) {
-//                Predicate p2 = b.greaterThanOrEqualTo(root.get("price"), Double.parseDouble(fromPrice));
-//                predicates.add(p2);
-//            }
-//
-//            String toPrice = params.get("toPrice");
-//            if (toPrice != null && !toPrice.isEmpty()) {
-//                Predicate p3 = b.lessThanOrEqualTo(root.get("price"), Double.parseDouble(toPrice));
-//                predicates.add(p3);
-//            }
+            String toPrice = params.get("toPrice");
+            if (toPrice != null && !toPrice.isEmpty()) {
+                Predicate p3 = b.lessThanOrEqualTo(root.get("giaVe"), Double.parseDouble(toPrice));
+                predicates.add(p3);
+            }
 
             String txId = params.get("txId");
             if (txId != null && !txId.isEmpty()) {

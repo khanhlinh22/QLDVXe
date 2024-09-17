@@ -7,6 +7,7 @@ package com.dv.pojo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +17,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -42,6 +45,28 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "NguoiDung.findBySdt", query = "SELECT n FROM NguoiDung n WHERE n.sdt = :sdt"),
     @NamedQuery(name = "NguoiDung.findByRoleName", query = "SELECT n FROM NguoiDung n WHERE n.roleName = :roleName")})
 public class NguoiDung implements Serializable {
+
+    public static final String ADMIN = "ADMIN";
+    public static final String NHANVIEN = "NHANVIEN";
+    public static final String KHACHHANG = "KHACHHANG";
+    public static final String TAIXE = "TAIXE";
+
+    /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+    /**
+     * @return the confirmPassword
+     */
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -94,13 +119,18 @@ public class NguoiDung implements Serializable {
     private String sdt;
     @Size(max = 50)
     @Column(name = "role_name")
+    // co tuy chinh cho nay 
     private String roleName;
-    @OneToMany(mappedBy = "nguoiDungNvId")
+    @OneToMany(mappedBy = "nguoiDungNvId", cascade = CascadeType.ALL)
     private Set<NhanVien> nhanVienSet;
-    @OneToMany(mappedBy = "nguoiDungKhId")
+    @OneToMany(mappedBy = "nguoiDungKhId", cascade = CascadeType.ALL)
     private Set<KhachHang> khachHangSet;
-    @OneToMany(mappedBy = "nguoiDungTxId")
+    @OneToMany(mappedBy = "nguoiDungTxId", cascade = CascadeType.ALL)
     private Set<TaiXe> taiXeSet;
+    @Transient
+    private MultipartFile file;
+    @Transient
+    private String confirmPassword;
 
     public NguoiDung() {
     }
@@ -260,5 +290,24 @@ public class NguoiDung implements Serializable {
     public String toString() {
         return "com.dv.pojo.NguoiDung[ id=" + id + " ]";
     }
-    
+
+    public Object getObjectFile() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
 }

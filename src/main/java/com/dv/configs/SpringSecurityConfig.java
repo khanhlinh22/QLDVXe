@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -68,12 +67,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         
         http.exceptionHandling().accessDeniedPage("/login?accessDenied");
         
-//        http.authorizeRequests().antMatchers("/**").permitAll()
-//                .antMatchers("/**").hasRole("ADMIN");
-         http.authorizeRequests()
-        .antMatchers("/", "/public/**", "/login", "/register").permitAll() // Allow access to these URLs without authentication
-        .antMatchers("/admin/**").hasRole("ADMIN") // Protect /admin/** URLs to only allow ADMIN role
-        .anyRequest().authenticated(); // Require authentication for any other requests
+//        http.authorizeRequests().antMatchers("/").permitAll()
+//                .antMatchers("/admin/**").access("hasRole('ADMIN')");
+//         http.authorizeRequests()
+//        .antMatchers("/", "/public/**", "/login", "/register").permitAll() // Allow access to these URLs without authentication
+//        .antMatchers("/admin/**").hasRole("ADMIN") // Protect /admin/** URLs to only allow ADMIN role
+//        .anyRequest().authenticated(); // Require authentication for any other requests
 
         http.csrf().disable();
     }

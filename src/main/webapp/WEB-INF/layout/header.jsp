@@ -8,18 +8,20 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-<!--        <a class="navbar-brand"><img width="300px" src="<c:url value="/images/logo.png" />"></a>-->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-          <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand">
+            <img width="100px" src="<c:url value='/images/logo.jpg' />" alt="Logo">
+        </a>        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-                <c:forEach items="${chuyenxes}" var="c">
-                    <li class="nav-item">
+
+                <c:forEach items="${tuyenXes}" var="c">
+                    <li class="nav-item"style="font-size: 12px;">
                         <c:url var="myUrl" value="/">
-                            <c:param name="chuyenXeId" value="${c.id}"/>
+                            <c:param name="tuyenXeId" value="${c.id}"/>
                         </c:url>
-                        <a class="nav-link" href="${myUrl}">Chuyen xe ${c.chuyenxe}</a>
+                        <a class="nav-link" href="${myUrl}">Tuyến Xe ${c.tenTuyen}</a>
                     </li> 
                 </c:forEach>
                 <li class="nav-item dropdown">
