@@ -88,4 +88,9 @@ public class NguoiDungServiceImpl implements NguoiDungService {
     public void addNguoiDung(NguoiDung nd) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public boolean authUser(String username, String password) {
+        return this.nguoiDungRepo.authUser(username,password);
+    }
 }

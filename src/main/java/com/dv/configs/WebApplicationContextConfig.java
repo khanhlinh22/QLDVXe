@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -93,6 +94,15 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         registry.addFormatter(new TaiXeFormatter());
         registry.addFormatter(new XeFormatter());
 
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000") // Cho phép từ frontend
+                .allowedMethods("GET", "POST", "PUT", "DELETE") // Các phương thức được phép
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 
     @Bean

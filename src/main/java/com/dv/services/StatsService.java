@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface StatsService {
      List<Object[]> statsRevenueByChuyenXe();
-    List<Object[]> statsRevenueByPeroid(int year, String peroid);
+    List<Object[]> statsRevenueByPeroid(int year, String period);
 
     
 }

@@ -10,7 +10,7 @@
 
 
 <h1 class="text-center text-primary mt-1">QUẢN LÝ CHUYẾN XE</h1>
-<c:url value="/chuyenxes" var="action" />
+<c:url value="/admin/chuyenxes" var="action" />
 <c:if test="${errMsg != null}">
     <div class="alert alert-danger">
         ${errMsg}s

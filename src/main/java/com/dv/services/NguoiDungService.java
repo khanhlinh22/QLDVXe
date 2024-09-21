@@ -12,10 +12,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  *
  * @author ADMIN
  */
-public interface NguoiDungService extends UserDetailsService{
-      boolean addUser(NguoiDung nguoiDung);
-    List<NguoiDung>getUsers(String username);
+public interface NguoiDungService extends UserDetailsService {
+
+    boolean addUser(NguoiDung nguoiDung);
+
+    List<NguoiDung> getUsers(String username);
+
     NguoiDung getNguoiDungByUsername(String username);
+
     void addTroLy(NguoiDung nd, int khoaId);
+
     void addNguoiDung(NguoiDung nd);
+
+    boolean authUser(String username, String password);
+
 }

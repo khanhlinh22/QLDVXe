@@ -4,6 +4,7 @@
  */
 package com.dv.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -75,16 +77,19 @@ public class ChuyenXe implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "trang_thai")
     private String trangThai;
-    @OneToMany(mappedBy = "chuyenXeDvId", cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy = "chuyenXeDvId", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)// Phan nay them cascade và fetc
+    @JsonIgnore//Them json
     private Set<DatVe> datVeSet;
-    @OneToMany(mappedBy = "chuyenXeId", cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy = "chuyenXeId", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)// Phan nay them cascade và fetc
+    @JsonIgnore//Them jsion
     private Set<LichTrinh> lichTrinhSet;
     @JoinColumn(name = "tuyen_xe_id", referencedColumnName = "id")
     @ManyToOne
     private TuyenXe tuyenXeId;
 
     @Transient
-    private MultipartFile file;
+    private MultipartFile file; //Them multipartFile de upload anh
+
     public ChuyenXe() {
     }
 
@@ -197,6 +202,7 @@ public class ChuyenXe implements Serializable {
     public String toString() {
         return "com.dv.pojo.ChuyenXe[ id=" + id + " ]";
     }
+
     /**
      * @return the file
      */

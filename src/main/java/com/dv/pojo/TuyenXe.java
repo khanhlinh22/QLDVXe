@@ -4,11 +4,13 @@
  */
 package com.dv.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -69,9 +71,11 @@ public class TuyenXe implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "khoang_cach")
     private String khoangCach;
-    @OneToMany(mappedBy = "tuyenXeDvId")
+    @OneToMany(mappedBy = "tuyenXeDvId", fetch = FetchType.LAZY)// them fatch du lieu 
+    @JsonIgnore//Them jsonIgnore
     private Set<DatVe> datVeSet;
-    @OneToMany(mappedBy = "tuyenXeId")
+    @OneToMany(mappedBy = "tuyenXeId", fetch = FetchType.LAZY)// them fatch du lieu 
+    @JsonIgnore//Them jsonIgnore
     private Set<ChuyenXe> chuyenXeSet;
 
     public TuyenXe() {
@@ -180,5 +184,5 @@ public class TuyenXe implements Serializable {
     public String toString() {
         return "com.dv.pojo.TuyenXe[ id=" + id + " ]";
     }
-    
+
 }

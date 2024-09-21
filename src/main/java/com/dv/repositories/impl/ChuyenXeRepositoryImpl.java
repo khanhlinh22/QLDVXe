@@ -48,7 +48,11 @@ public class ChuyenXeRepositoryImpl implements ChuyenXeRepository {
 
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
-
+            String kw = params.get("kw");
+            if (kw != null && !kw.isEmpty()) {
+                Join<ChuyenXe, TuyenXe> tuyenJoin = root.join("tuyenXeId"); // Tên thuộc tính trong thực thể
+                predicates.add(b.like(b.lower(tuyenJoin.get("tenTuyen")), "%" + kw.toLowerCase() + "%"));
+            }
             String fromPrice = params.get("fromPrice");
             if (fromPrice != null && !fromPrice.isEmpty()) {
                 Predicate p2 = b.greaterThanOrEqualTo(root.get("giaVe"), Double.parseDouble(fromPrice));
@@ -110,5 +114,3 @@ public class ChuyenXeRepositoryImpl implements ChuyenXeRepository {
         s.delete(cx);
     }
 }
-
-

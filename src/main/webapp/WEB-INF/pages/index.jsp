@@ -15,7 +15,10 @@ Author     : DELL
         <div class="col-md-2 col-12 bg-secondary">
             <c:url value="/" var="action" />
             <form action="${action}">
-
+                <div class="mb-3 mt-3">
+                    <label for="kw" class="form-label">Từ khóa:</label>
+                    <input type="text" class="form-control" id="kw" placeholder="Từ khóa..." name="q">
+                </div>
                 <div class="mb-3 mt-3">
                     <label for="fromPrice" class="form-label">Từ giá (VNĐ):</label>
                     <input type="number" class="form-control" id="fromPrice" placeholder="Từ giá..." name="fromPrice">
@@ -33,7 +36,7 @@ Author     : DELL
 
 
 
-            <sec:authorize access="hasRole('ADMIN')">
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <div>
                     <a class="btn btn-info m-1" href="<c:url value='/admin/chuyenxes' />">Thêm chuyến xe</a>              
                 </div>

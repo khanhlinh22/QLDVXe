@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,21 +27,33 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class ApiChuyenXeController {
+
     @Autowired
     private ChuyenXeService chuyenXeService;
-    
+
+    @GetMapping("/chuyenxes")
+    public ResponseEntity<List<ChuyenXe>> list(@RequestParam Map<String, String> params) {
+        //return new ResponseEntity<>(this.chuyenXeService.getChuyenXes(params), HttpStatus.OK);
+        List<ChuyenXe> chuyenXes = this.chuyenXeService.getChuyenXes(params);
+    // Populate TuyenXe details for each ChuyenXe
+    for (ChuyenXe cx : chuyenXes) {
+        cx.getTuyenXeId();  // Ensure this retrieves TuyenXe data
+    }
+    return new ResponseEntity<>(chuyenXes, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/chuyenxes/{chuyenXeId}/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ChuyenXe> retrieve(@PathVariable(value = "chuyenXeId") int id) {
+        return new ResponseEntity<>(this.chuyenXeService.getChuyenXeById(id), HttpStatus.OK);
+    }
+
+   
     @DeleteMapping("/chuyenxes/{chuyenXeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable(value = "chuyenXeId") int id) {
         this.chuyenXeService.deleteChuyenXe(id);
     }
-    
-    @GetMapping("/chuyenxes")
-    public ResponseEntity<List<ChuyenXe>> list(@RequestParam Map<String, String> params) {
-        List<ChuyenXe> chuyenxes = this.chuyenXeService.getChuyenXes(params);
-        
-        return new ResponseEntity<>(chuyenxes, HttpStatus.OK);
-    }
+
 }

@@ -18,6 +18,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +31,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class NguoiDungRepositoryImpl implements  NguoiDungRepository{
   @Autowired
     private LocalSessionFactoryBean factory;
+  @Autowired
+  private BCryptPasswordEncoder PasswordEncoder;
    
     
     @Override
@@ -79,6 +82,12 @@ public class NguoiDungRepositoryImpl implements  NguoiDungRepository{
     @Override
     public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean authUser(String username, String password) {
+        NguoiDung nd = this.getNguoiDungByUsername(username);
+        return this.PasswordEncoder.matches(password,nd.getPassword());
     }
     
     

@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface StatsRepository {
     List<Object[]> statsRevenueByChuyenXe();
-    List<Object[]> statsRevenueByPeroid(int year, String peroid);
+    List<Object[]> statsRevenueByPeroid(int year, String period);
 }

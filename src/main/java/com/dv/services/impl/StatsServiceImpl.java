@@ -26,8 +26,8 @@ public class StatsServiceImpl implements StatsService {
     }
 
     @Override
-    public List<Object[]> statsRevenueByPeroid(int year, String peroid) {
-        return this.statsRepository.statsRevenueByPeroid(year, peroid);
+    public List<Object[]> statsRevenueByPeroid(int year, String period) {
+        return this.statsRepository.statsRevenueByPeroid(year, period);
     }
 
    

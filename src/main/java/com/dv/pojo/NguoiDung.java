@@ -45,7 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "NguoiDung.findBySdt", query = "SELECT n FROM NguoiDung n WHERE n.sdt = :sdt"),
     @NamedQuery(name = "NguoiDung.findByRoleName", query = "SELECT n FROM NguoiDung n WHERE n.roleName = :roleName")})
 public class NguoiDung implements Serializable {
-
+    //Khai bao cac quyen
     public static final String ADMIN = "ROLE_ADMIN";
     public static final String NHANVIEN = "ROLE_NHANVIEN";
     public static final String KHACHHANG = "ROLE_KHACHHANG";
@@ -56,6 +56,7 @@ public class NguoiDung implements Serializable {
      */
     public String getConfirmPassword() {
         return confirmPassword;
+        //Get controll passworod
     }
 
     /**
@@ -63,6 +64,7 @@ public class NguoiDung implements Serializable {
      */
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+        //Set confirmPassword
     }
     /**
      * @return the confirmPassword
@@ -121,12 +123,13 @@ public class NguoiDung implements Serializable {
     @Column(name = "role_name")
     // co tuy chinh cho nay 
     private String roleName;
-    @OneToMany(mappedBy = "nguoiDungNvId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "nguoiDungNvId", cascade = CascadeType.ALL)// them phan cascade 
     private Set<NhanVien> nhanVienSet;
-    @OneToMany(mappedBy = "nguoiDungKhId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "nguoiDungKhId", cascade = CascadeType.ALL)// them phan cascade 
     private Set<KhachHang> khachHangSet;
-    @OneToMany(mappedBy = "nguoiDungTxId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "nguoiDungTxId", cascade = CascadeType.ALL)// them phan cascade 
     private Set<TaiXe> taiXeSet;
+    //Phai transient ca hai cai la multipartFile và confirmPassword
     @Transient
     private MultipartFile file;
     @Transient

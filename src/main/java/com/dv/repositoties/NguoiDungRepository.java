@@ -17,4 +17,5 @@ public interface NguoiDungRepository extends UserDetailsService{
     boolean addUser(NguoiDung nguoiDung);
     List<NguoiDung> getUsers(String username);
     void addNguoiDung(NguoiDung nd);
+    boolean authUser(String username, String password);
 }
