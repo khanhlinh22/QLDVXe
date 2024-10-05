@@ -28,7 +28,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = {
     "com.dv.controllers",
     "com.dv.repositories",
-    "com.dv.services"
+    "com.dv.services",
+    "com.dv.components"
 })
 
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -69,9 +70,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedPage("/login?accessDenied");
         http.authorizeRequests().antMatchers("/").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
-
-        
-       
+//        http.authorizeRequests()
+//                .antMatchers("/api/current-user/").permitAll() // Cho phép truy cập không cần xác thực
+//                .anyRequest().authenticated();
+//        http.authorizeRequests().antMatchers("/api/**").permitAll()
+//                .antMatchers("/**").access("hasRole('ROLE_ADMIN')");
         http.csrf().disable();
     }
 }

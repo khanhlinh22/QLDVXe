@@ -130,17 +130,17 @@ LOCK TABLES `nguoi_dung` WRITE;
 /*!40000 ALTER TABLE `nguoi_dung` DISABLE KEYS */;
 INSERT INTO nguoi_dung(ho,ten,username,password,email,CCCD,avatar,nam_sinh,SDT,role_name)
 VALUES 
-('Nguyễn', 'Văn A', 'nguyenvana', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vana@gmail.com', '123456789012', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1990, '0912345678', 'ROLE_ADMIN'),
-('Trần', 'Thị B', 'tranthib', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thib@gmail.com', '123456789013', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1992, '0912345679', 'ROLE_KHACHHANG'),
-('Lê', 'Văn C', 'levanc', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vanc@gmail.com', '123456789014', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1988, '0912345680', 'ROLE_KHACHHANG'),
-('Phạm', 'Thị D', 'phamthid', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thid@gmail.com', '123456789015', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1995, '0912345681', 'ROLE_NHANVIEN'),
-('Trần', 'Văn E', 'vovane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vane@gmail.com', '123456789016', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
-('Hà', 'Văn E', 'havane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'hane@gmail.com', '123456789017','https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
-('Huỳnh', 'Văn E', 'huynhvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'huynhvane@gmail.com', '123456789018', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
-('Vũ', 'Văn E', 'vuvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vuvane@gmail.com', '123456789019', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
-('Diệp', 'Văn E', 'diepvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'diepvane@gmail.com', '123456789010', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
-('Di', 'Văn E', 'divane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'divane@gmail.com', '123456789021', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_TAIXE'),
-('Dư', 'Văn E', 'duvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'duvane@gmail.com', '123456789022', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_TAIXE');
+('Nguyễn', 'Văn A', 'nguyenvana', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vana@gmail.com', '1234567812', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1990, '0912345678', 'ROLE_ADMIN'),
+('Trần', 'Thị B', 'tranthib', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thib@gmail.com', '1234567813', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1992, '0912345679', 'ROLE_KHACHHANG'),
+('Lê', 'Văn C', 'levanc', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vanc@gmail.com', '1234567814', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1988, '0912345680', 'ROLE_KHACHHANG'),
+('Phạm', 'Thị D', 'phamthid', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'thid@gmail.com', '1234567815', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1995, '0912345681', 'ROLE_NHANVIEN'),
+('Trần', 'Văn E', 'vovane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vane@gmail.com', '1234567816', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
+('Hà', 'Văn E', 'havane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'hane@gmail.com', '1234567817','https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
+('Huỳnh', 'Văn E', 'huynhvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'huynhvane@gmail.com', '1234567818', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
+('Vũ', 'Văn E', 'vuvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'vuvane@gmail.com', '1234567819', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
+('Diệp', 'Văn E', 'diepvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'diepvane@gmail.com', '1234567810', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_NHANVIEN'),
+('Di', 'Văn E', 'divane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'divane@gmail.com', '1234567821', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_TAIXE'),
+('Dư', 'Văn E', 'duvane', '$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO', 'duvane@gmail.com', '1234567822', 'https://res.cloudinary.com/dizsmwu7t/image/upload/v1726123760/aad42cee274f8011d95e_ppq4pj.jpg', 1993, '0912345682', 'ROLE_TAIXE');
 /*!40000 ALTER TABLE  `nguoi_dung` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,5 +366,36 @@ VALUES
     (1, 600000.00, '2024-08-26 11:00:00', 'BANK');
  /*!40000 ALTER TABLE  `thanh_toan` ENABLE KEYS */;
 UNLOCK TABLES;
+-- Finish binh_luan
+DROP TABLE IF EXISTS `binh_luan`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `binh_luan`
+(
+	`id` INT NOT NULL AUTO_INCREMENT,
+    `content` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `ngay_binh_luan` DATETIME DEFAULT CURRENT_TIMESTAMP,
+	`khach_hang_bl_id` INT,
+    `chuyen_xe_bl_id` INT,
+    PRIMARY KEY (id),
+	KEY `khach_hang_bl_id` (`khach_hang_bl_id`),
+	KEY `chuyen_xe_bl_id` (`chuyen_xe_bl_id`),
+    CONSTRAINT `khach_hang_bl_idfk_1` FOREIGN KEY (`khach_hang_bl_id`) REFERENCES `khach_hang_bl_id` (`id`),
+	CONSTRAINT `chuyen_xe_bl_idfk_1` FOREIGN KEY (`chuyen_xe_bl_id`) REFERENCES `chuyen_xe_bl_id` (`id`)
+
+) ENGINE=InnoDB   DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `thong_ke`
+--
+
+LOCK TABLES `binh_luan` WRITE;
+/*!40000 ALTER TABLE `binh_luan` DISABLE KEYS */;
+INSERT INTO `binh_luan` (`content`, `khach_hang_bl_id`, `chuyen_xe_bl_id`)
+VALUES ('Xe này rất đẹp', 1, 2),
+('Xe trang bị đầy đủ tiện nghi', 2, 2);
+ /*!40000 ALTER TABLE  `binh_luan` ENABLE KEYS */;
+UNLOCK TABLES;
+
 
  

@@ -11,6 +11,19 @@ function deleteChuyenXe(endpoint, chuyenXeId) {
         });
     }
 }
+function deleteNguoiDung(endpoint, nguoiDungId) {
+    if (confirm("Bạn chắc chắn xóa không?") === true) {
+        fetch(endpoint, {
+            method: "DELETE"
+        }).then(res => {
+            if (res.status === 204) {
+                let d = document.getElementById(`nguoidung${nguoiDungId}`);
+                d.style.display = "none";
+            } else
+                alert("Something Wrong!");
+        });
+    }
+}
 function drawChartRevenue(ctx, labels, data, title="Doanh thu") {
     let colors = [];
     for (let i = 0; i < data.length; i++)

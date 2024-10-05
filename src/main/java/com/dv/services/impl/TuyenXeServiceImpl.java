@@ -25,6 +25,11 @@ public class TuyenXeServiceImpl implements TuyenXeService {
         return this.tuyenXeRepo.getTuyenXes();
     }
 
+    @Override
+    public TuyenXe getTuyenXeById(int id) {
+          return this.tuyenXeRepo.getTuyenXeById(id);
+    }
+
    
 
    

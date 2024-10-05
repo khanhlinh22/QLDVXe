@@ -12,5 +12,8 @@ import java.util.List;
  * @author ADMIN
  */
 public interface DatVeRepository {
+
     List<DatVe> getDatVes();
+    DatVe getDatVeById(int id);
+
 }

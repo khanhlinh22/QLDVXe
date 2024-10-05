@@ -12,6 +12,9 @@ import java.util.List;
  * @author ADMIN
  */
 public interface TuyenXeRepository {
-      List<TuyenXe> getTuyenXes();
-     
+
+    List<TuyenXe> getTuyenXes();
+
+    TuyenXe getTuyenXeById(int id);
+
 }

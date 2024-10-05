@@ -35,4 +35,10 @@ public class DatVeRepositoryImpl implements DatVeRepository {
         Query q = s.createNamedQuery("DatVe.findAll");
         return q.getResultList();
     }
+
+    @Override
+    public DatVe getDatVeById(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(DatVe.class, id);
+    }
 }

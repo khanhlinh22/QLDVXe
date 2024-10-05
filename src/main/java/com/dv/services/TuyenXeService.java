@@ -13,5 +13,9 @@ import java.util.Map;
  * @author ADMIN
  */
 public interface TuyenXeService {
-        List<TuyenXe> getTuyenXes();
+
+    List<TuyenXe> getTuyenXes();
+
+    public TuyenXe getTuyenXeById(int id);
+
 }

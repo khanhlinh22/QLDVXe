@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import APIs, { endpoints } from "../../configs/APIs";
-import { Badge, Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row, Spinner } from "react-bootstrap";
+import { Badge, Button, Col, Container, Form, Image, Nav, Navbar, NavDropdown, Row, Spinner } from "react-bootstrap";
 import MySpinner from "./MySpinner";
 import { Link, useNavigate } from "react-router-dom";
-import { CartContext } from "../../configs/Context";
+import { MyCartContext, MyDispatchContext, MyUserContext } from "../../App";
 
 const Header = () => {
     const [tuyenxes, setTuyenXes] = useState(null);
-    const [kw,setKw] =useState("");
+    const [kw, setKw] = useState("");
     const nav = useNavigate();
-    const [value, ] = useContext(CartContext);
+    const [cartCounter, ] = useContext(MyCartContext);
+    const user = useContext(MyUserContext);
+    const dispatch = useContext(MyDispatchContext);
+
     //load tuyen xe
     const loadTX = async () => {
         try {
@@ -26,7 +29,7 @@ const Header = () => {
     }, [])
 
 
-    const submit =(event) => {
+    const submit = (event) => {
         event.preventDefault();
         nav(`/?kw=${kw}`);
     }
@@ -55,15 +58,25 @@ const Header = () => {
                                 </>
                             }
                         </NavDropdown>
-                        <Link to="/cart" className="nav-link" > &#128722; <Badge bg ="danger">{value}</Badge></Link>
-                       
+                        {user === null ? <>
+                            <Link className='nav-link text-success' to="/login">&#129489; Đăng nhập</Link>
+                            <Link className='nav-link text-success' to="/register">&#129489; Đăng ký</Link>
+
+
+                        </> : <>
+                            <Link className='nav-link text-success' to="/login">
+                                <Image src={user.avatar} width="25" roundedCircle />
+                                Chào {user.username}!</Link>
+                            <Button variant='danger' onClick={() => dispatch({ "type": "logout" })}>Đăng xuất</Button>
+                        </>}
+                        <Link className='nav-link text-danger' to="/cart">&#128722; <Badge bg='danger'>{cartCounter}</Badge></Link>
                     </Nav>
                 </Navbar.Collapse>
-               
+
                 <Form inline onSubmit={submit}>
                     <Row>
                         <Col xs="auto">
-                            <Form.Control value={kw} onChange={e =>setKw(e.target.value)}
+                            <Form.Control value={kw} onChange={e => setKw(e.target.value)}
                                 type="text"
                                 placeholder="Nhập từ khóa"
                                 className=" mr-sm-2"

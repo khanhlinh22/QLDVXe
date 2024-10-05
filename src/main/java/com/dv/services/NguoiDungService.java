@@ -6,7 +6,9 @@ package com.dv.services;
 
 import com.dv.pojo.NguoiDung;
 import java.util.List;
+import java.util.Map;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -20,10 +22,15 @@ public interface NguoiDungService extends UserDetailsService {
 
     NguoiDung getNguoiDungByUsername(String username);
 
-    void addTroLy(NguoiDung nd, int khoaId);
-
-    void addNguoiDung(NguoiDung nd);
+    NguoiDung addNguoiDung(Map<String, String> params, MultipartFile avatar);
 
     boolean authUser(String username, String password);
 
+    List<NguoiDung> getNguoiDungs(Map<String, String> params);
+
+    void addOrUpdate(NguoiDung nd);
+
+    public NguoiDung getNguoiDungById(int id);
+
+    void deleteNguoiDung(int id);
 }

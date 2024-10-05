@@ -5,6 +5,8 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
@@ -27,9 +29,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tính năng</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Bảng tin</a></li>
-                        <li><a class="dropdown-item btn-info" href="<c:url value="/stats" />">Thống kê</a></li>
+                        <li><a class="dropdown-item" href="<c:url value="/" />">Bảng tin</a></li>
                         <li><a class="dropdown-item" href="#">Hỏi đáp</a></li>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <li><a class="dropdown-item btn-info" href="<c:url value="/stats" />">Thống kê</a></li>
+                            <li><a class="dropdown-item btn-info" href="<c:url value="/indexuser" />">Quản lý Nhân Viên</a></li>
+                            </sec:authorize>
                     </ul>
                 </li>
 

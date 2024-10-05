@@ -38,6 +38,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="title" value="Thống kê" />
         <put-attribute name="content" value="/WEB-INF/pages/stats.jsp" />
     </definition>
+    <definition name="indexuser" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Nhân Viên" />
+        <put-attribute name="content" value="/WEB-INF/pages/indexuser.jsp" />
+    </definition>
+     <definition name="qlnvs" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý NV" />
+        <put-attribute name="content" value="/WEB-INF/pages/qlnvs.jsp" />
+    </definition>
 </tiles-definitions>
 
 

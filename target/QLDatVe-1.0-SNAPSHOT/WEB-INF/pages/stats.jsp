@@ -26,7 +26,7 @@
                     <td>${r[0]}</td>
                     <td>${r[1]}</td>
                     <td>${String.format("%.2f", r[2])} VNĐ</td>
-      
+
                 </tr>
 
             </c:forEach>
@@ -80,45 +80,39 @@
                 <tr>
                     <td>${p[0]}</td>
                     <td>  <fmt:formatNumber value="${p[1]}" type="currency" maxFractionDigits="2" /></td>
-                 
+
                 </tr>
             </c:forEach>
         </table>
 
 
     </div>
+    <div class="col-md-7 col-12">
+        <canvas id="myChart2"></canvas>
+    </div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="<c:url value="../js/main.js" />"></script>
+<script>
+    let labels = [];
+    let data = [];
+    <c:forEach items="${revenues}" var="p">
+    labels.push('${p[1]}');
+    data.push(${p[2]});
+    </c:forEach>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        let labels = [];
-        let data = [];
-        <c:forEach items="${revenues}" var="r">
-        labels.push('${r[1]}');
-        data.push(${r[2]});
-        </c:forEach>
+    let label2 = [];
+    let data2 = [];
+    <c:forEach items="${revenueByPeriod}" var="p">
+    label2.push(${p[0]});
+    data2.push(${p[1]});
+    </c:forEach>
+    window.onload = function () {
+        let ctx1 = document.getElementById("myChart");
+        drawChartRevenue(ctx1, labels, data);
 
-        window.onload = function () {
-            const ctx = document.getElementById('myChart');
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                            label: '# Doanh thu',
-                            data: data,
-                            borderWidth: 1
-                        }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-        }
-    </script>
+        let ctx2 = document.getElementById("myChart2");
+        drawChartRevenue(ctx2, label2, data2);
+    }
+</script>

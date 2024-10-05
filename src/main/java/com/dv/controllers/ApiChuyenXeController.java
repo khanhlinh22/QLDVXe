@@ -33,27 +33,26 @@ public class ApiChuyenXeController {
     @Autowired
     private ChuyenXeService chuyenXeService;
 
-    @GetMapping("/chuyenxes")
-    public ResponseEntity<List<ChuyenXe>> list(@RequestParam Map<String, String> params) {
-        //return new ResponseEntity<>(this.chuyenXeService.getChuyenXes(params), HttpStatus.OK);
-        List<ChuyenXe> chuyenXes = this.chuyenXeService.getChuyenXes(params);
-    // Populate TuyenXe details for each ChuyenXe
-    for (ChuyenXe cx : chuyenXes) {
-        cx.getTuyenXeId();  // Ensure this retrieves TuyenXe data
-    }
-    return new ResponseEntity<>(chuyenXes, HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/chuyenxes/{chuyenXeId}/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ChuyenXe> retrieve(@PathVariable(value = "chuyenXeId") int id) {
-        return new ResponseEntity<>(this.chuyenXeService.getChuyenXeById(id), HttpStatus.OK);
-    }
-
-   
     @DeleteMapping("/chuyenxes/{chuyenXeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable(value = "chuyenXeId") int id) {
         this.chuyenXeService.deleteChuyenXe(id);
+    }
+
+    @GetMapping("/chuyenxes")
+    public ResponseEntity<List<ChuyenXe>> list(@RequestParam Map<String, String> params) {
+        //return new ResponseEntity<>(this.chuyenXeService.getChuyenXes(params), HttpStatus.OK);
+        List<ChuyenXe> chuyenXes = this.chuyenXeService.getChuyenXes(params);
+        // Populate TuyenXe details for each ChuyenXe
+        for (ChuyenXe cx : chuyenXes) {
+            cx.getTuyenXeId();  // Ensure this retrieves TuyenXe data
+        }
+        return new ResponseEntity<>(chuyenXes, HttpStatus.OK);
+    }
+//Can phai có produces de tra ve dung mediatype
+    @GetMapping(path = "/chuyenxes/{chuyenXeId}/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ChuyenXe> retrieve(@PathVariable(value = "chuyenXeId") int id) {
+        return new ResponseEntity<>(this.chuyenXeService.getChuyenXeById(id), HttpStatus.OK);
     }
 
 }

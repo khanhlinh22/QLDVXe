@@ -23,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -35,8 +36,9 @@ public class NguoiDungServiceImpl implements NguoiDungService {
     private NguoiDungRepository nguoiDungRepo;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
- @Autowired
+    @Autowired
     private Cloudinary cloudinary;
+
     @Override
     public boolean addUser(NguoiDung nguoiDung) {
         String pass = nguoiDung.getPassword();
@@ -64,7 +66,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<NguoiDung> nguoiDungs = this.getUsers(username);
+        List<NguoiDung> nguoiDungs = this.nguoiDungRepo.getUsers(username);
         if (nguoiDungs.isEmpty()) {
             throw new UsernameNotFoundException("User khong ton tai");
         }
@@ -76,21 +78,69 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
     @Override
     public NguoiDung getNguoiDungByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.nguoiDungRepo.getNguoiDungByUsername(username);
     }
 
     @Override
-    public void addTroLy(NguoiDung nd, int khoaId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public NguoiDung addNguoiDung(Map<String, String> params, MultipartFile avatar) {
+        NguoiDung nd = new NguoiDung();
+        nd.setTen(params.get("ten"));
+        nd.setHo(params.get("ho"));
+        nd.setSdt(params.getOrDefault("sdt", "9999999999"));
+        nd.setEmail(params.getOrDefault("email", "a@gmail.com"));
+        nd.setCccd(params.getOrDefault("cccd", "9999999999"));
+        nd.setNamSinh(Integer.parseInt(params.get("namSinh")));
+        nd.setUsername(params.get("username"));
+        nd.setPassword(this.passwordEncoder.encode(params.get("password")));
+        nd.setRoleName("ROLE_KHACHHANG");
+        if (!avatar.isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(avatar.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                nd.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(NguoiDungServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
-    @Override
-    public void addNguoiDung(NguoiDung nd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.nguoiDungRepo.addNguoiDung(nd);
+        return nd;
     }
 
     @Override
     public boolean authUser(String username, String password) {
-        return this.nguoiDungRepo.authUser(username,password);
+
+        return this.nguoiDungRepo.authUser(username, password);
+    }
+
+    @Override
+    public void addOrUpdate(NguoiDung nd) {
+        if (!nd.getFile().isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(nd.getFile().getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+
+                nd.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(NguoiDungServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.nguoiDungRepo.addOrUpdate(nd);
+    }
+
+    @Override
+    public NguoiDung getNguoiDungById(int id) {
+        return this.nguoiDungRepo.getNguoiDungById(id);
+    }
+
+    @Override
+    public void deleteNguoiDung(int id) {
+        this.nguoiDungRepo.deleteNguoiDung(id);
+
+    }
+
+    @Override
+    public List<NguoiDung> getNguoiDungs(Map<String, String> params) {
+         return this.nguoiDungRepo.getNguoiDungs(params);
     }
 }

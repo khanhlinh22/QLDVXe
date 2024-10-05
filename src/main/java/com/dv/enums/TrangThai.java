@@ -9,9 +9,12 @@ package com.dv.enums;
  * @author ADMIN
  */
 public enum TrangThai {
-  ACTIVE("Active"),
+    ACTIVE("Active"),
     COMPLETED("Completed"),
-    CANCELLED("Cancelled");
+    CANCELLED("Cancelled"),
+    PAID("Paid"),               // Trạng thái thanh toán
+    CANCELLED_DV("Cancelled"),
+    PENDING("Pending");
 
     private final String displayName;
 

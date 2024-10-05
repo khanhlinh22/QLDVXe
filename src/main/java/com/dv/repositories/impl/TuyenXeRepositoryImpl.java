@@ -40,6 +40,12 @@ public class TuyenXeRepositoryImpl implements TuyenXeRepository {
         return q.getResultList();
     }
 
+    @Override
+    public TuyenXe getTuyenXeById(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(TuyenXe.class, id);
+    }
+
    
 
 }

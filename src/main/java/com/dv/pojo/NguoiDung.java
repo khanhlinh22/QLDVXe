@@ -4,12 +4,14 @@
  */
 package com.dv.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -123,11 +125,14 @@ public class NguoiDung implements Serializable {
     @Column(name = "role_name")
     // co tuy chinh cho nay 
     private String roleName;
-    @OneToMany(mappedBy = "nguoiDungNvId", cascade = CascadeType.ALL)// them phan cascade 
+    @OneToMany(mappedBy = "nguoiDungNvId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)// them phan cascade 
+    @JsonIgnore // Can them ignore tat ca các truong du lieu onetomany
     private Set<NhanVien> nhanVienSet;
-    @OneToMany(mappedBy = "nguoiDungKhId", cascade = CascadeType.ALL)// them phan cascade 
+    @OneToMany(mappedBy = "nguoiDungKhId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)// them phan cascade 
+    @JsonIgnore
     private Set<KhachHang> khachHangSet;
-    @OneToMany(mappedBy = "nguoiDungTxId", cascade = CascadeType.ALL)// them phan cascade 
+    @OneToMany(mappedBy = "nguoiDungTxId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)// them phan cascade 
+    @JsonIgnore
     private Set<TaiXe> taiXeSet;
     //Phai transient ca hai cai la multipartFile và confirmPassword
     @Transient
@@ -294,10 +299,7 @@ public class NguoiDung implements Serializable {
         return "com.dv.pojo.NguoiDung[ id=" + id + " ]";
     }
 
-    public Object getObjectFile() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-
-    }
+    
 
     /**
      * @return the file

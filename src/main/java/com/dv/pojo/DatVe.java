@@ -4,12 +4,15 @@
  */
 package com.dv.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -68,7 +71,8 @@ public class DatVe implements Serializable {
     @JoinColumn(name = "tuyen_xe_dv_id", referencedColumnName = "id")
     @ManyToOne
     private TuyenXe tuyenXeDvId;
-    @OneToMany(mappedBy = "datVeId")
+    @OneToMany(mappedBy = "datVeId", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore//Them json
     private Set<ThanhToan> thanhToanSet;
 
     public DatVe() {
@@ -173,5 +177,5 @@ public class DatVe implements Serializable {
     public String toString() {
         return "com.dv.pojo.DatVe[ id=" + id + " ]";
     }
-    
+
 }

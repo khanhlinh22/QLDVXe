@@ -102,7 +102,8 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
                 .allowedOrigins("http://localhost:3000") // Cho phép từ frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Các phương thức được phép
                 .allowedHeaders("*")
-                .allowCredentials(true);
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 
     @Bean

@@ -6,16 +6,31 @@ package com.dv.repositoties;
 
 import com.dv.pojo.NguoiDung;
 import java.util.List;
+import java.util.Map;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author ADMIN
  */
-public interface NguoiDungRepository extends UserDetailsService{
+public interface NguoiDungRepository extends UserDetailsService {
+
     NguoiDung getNguoiDungByUsername(String username);
+
     boolean addUser(NguoiDung nguoiDung);
+
     List<NguoiDung> getUsers(String username);
-    void addNguoiDung(NguoiDung nd);
+
+    NguoiDung addNguoiDung(NguoiDung nguoiDung);
+
     boolean authUser(String username, String password);
+
+    List<NguoiDung> getNguoiDungs(Map<String, String> params);
+
+    void addOrUpdate(NguoiDung nd);
+
+    NguoiDung getNguoiDungById(int id);
+
+    void deleteNguoiDung(int id);
+
 }

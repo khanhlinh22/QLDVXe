@@ -37,3 +37,23 @@
   }
 }
 
+.webchat-hidden {
+  display: none;
+}
+
+.webchat-visible {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  width: 300px;  /* Kích thước khi thu nhỏ */
+  height: 400px; /* Kích thước khi thu nhỏ */
+  transition: width 0.3s, height 0.3s; /* Thêm hiệu ứng chuyển tiếp */
+}
+
+.webchat-expanded {
+  width: 400px;  /* Kích thước khi phóng to */
+  height: 500px; /* Kích thước khi phóng to */
+}
+

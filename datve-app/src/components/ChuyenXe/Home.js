@@ -5,13 +5,16 @@ import MySpinner from "../Commons/MySpinner";
 import { useSearchParams } from "react-router-dom";
 import cookie from "react-cookies";
 import { format } from 'date-fns';
-import { CartContext } from "../../configs/Context";
+import { MyCartContext } from "../../App";
+
+
 const Home = () => {
     const [chuyenxes, setChuyenXes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [q,] = useSearchParams();
     const [page, setPage] = useState(1);
-    const [, dispatch ] = useContext(CartContext);
+    const [ ,dispatch ] = useContext(MyCartContext);  // sử dụng MyCartContext để dispatch hành động
+
 
     const loadCX = async () => {
         setLoading(true);
@@ -70,7 +73,7 @@ const Home = () => {
         if (cart === null)
             cart = {};
         if (cx.id in cart) {
-            cart[cx.id]["quantity"]++;
+            cart[cx.id]["soChoDat"]++;
         }
         else {
             cart[cx.id] = {
@@ -81,7 +84,7 @@ const Home = () => {
                 "ngayGioKhoiHanh": cx.ngayGioKhoiHanh, 
                 "soCho": cx.soCho,
                 "trangThai": cx.trangThai,
-                "quantity": 1
+                "soChoDat": 1
             }
         }
         // cookie.save("cart", cart);
@@ -90,7 +93,7 @@ const Home = () => {
         dispatch({
             type: 'update-cart',
             payload: countCart()
-        })
+        });
     }
 
     // useEffect(() => {
@@ -103,7 +106,11 @@ const Home = () => {
         if(cart !== null)
         {
             for(let c of Object.values(cart))
-                count += c.quantity;
+                count += c.soChoDat;
+        }
+        else
+        {
+            count = 0;
         }
         return count;
     }
