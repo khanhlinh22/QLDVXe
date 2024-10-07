@@ -23,7 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class ApiReceiptController {
      @Autowired
     private ReceiptService receiptService;

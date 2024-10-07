@@ -33,4 +33,7 @@ public interface NguoiDungService extends UserDetailsService {
     public NguoiDung getNguoiDungById(int id);
 
     void deleteNguoiDung(int id);
+
+    NguoiDung getUserByUsername(String username);
+
 }

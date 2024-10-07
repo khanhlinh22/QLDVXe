@@ -143,4 +143,10 @@ public class NguoiDungServiceImpl implements NguoiDungService {
     public List<NguoiDung> getNguoiDungs(Map<String, String> params) {
          return this.nguoiDungRepo.getNguoiDungs(params);
     }
+
+    @Override
+    public NguoiDung getUserByUsername(String username) {
+        return this.nguoiDungRepo.getUserByUsername(username);
+                
+    }
 }

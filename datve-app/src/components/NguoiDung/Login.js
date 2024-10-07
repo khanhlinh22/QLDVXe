@@ -27,7 +27,7 @@ const Login = () => {
 
             let user = await authAPI().get(endpoints['current-user']);
             cookie.save("user", user.data);
-            localStorage.setItem("user", JSON.stringify(user.data)); // Lưu vào localStorage
+            // localStorage.setItem("user", JSON.stringify(user.data)); // Lưu vào localStorage
 
             dispatch({
                 "type": "login",
@@ -48,15 +48,15 @@ const Login = () => {
     }
 
     // Khôi phục người dùng từ localStorage khi component được mount
-    useEffect(() => {
-        const savedUser = localStorage.getItem("user");
-        if (savedUser) {
-            dispatch({
-                "type": "login",
-                "payload": JSON.parse(savedUser) // Chuyển đổi chuỗi JSON thành đối tượng
-            });
-        }
-    }, [dispatch]);
+    // useEffect(() => {
+    //     const savedUser = localStorage.getItem("user");
+    //     if (savedUser) {
+    //         dispatch({
+    //             "type": "login",
+    //             "payload": JSON.parse(savedUser) // Chuyển đổi chuỗi JSON thành đối tượng
+    //         });
+    //     }
+    // }, [dispatch]);
 
     if (user !== null) {
         return <Navigate to="/" />;

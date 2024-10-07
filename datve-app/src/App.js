@@ -68,8 +68,8 @@ function getResponse(userMessage) {
 
 const App = () => {
   // User and cart state
-  const initialUserState = { name: "", email: "", isNew: false }; // Thêm thuộc tính isNew
-  const [user, dispatch] = useReducer(MyUserReducer, initialUserState);
+  // const initialUserState = { name: "", email: "", isNew: false }; // Thêm thuộc tính isNew
+  const [user, dispatch] = useReducer(MyUserReducer, null);
 
   const initialCartState = JSON.parse(localStorage.getItem('cartCounter')) || 0;
   const [cartCounter, cartDispatch] = useReducer(MyCartReducer, initialCartState);

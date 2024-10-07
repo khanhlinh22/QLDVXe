@@ -5,6 +5,7 @@
 package com.dv.repositoties;
 
 import com.dv.pojo.NguoiDung;
+import com.google.common.base.Optional;
 import java.util.List;
 import java.util.Map;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,5 +33,7 @@ public interface NguoiDungRepository extends UserDetailsService {
     NguoiDung getNguoiDungById(int id);
 
     void deleteNguoiDung(int id);
+
+    public NguoiDung getUserByUsername(String username);
 
 }

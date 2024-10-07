@@ -10,10 +10,8 @@ const MyCartReducer = (currentState, action) => {
 
             return totalQuantity;
         }
-    } else if (action.type==='Paid')
-        return 0;
-        
+    }
+    
     return currentState;
 }
-
 export default MyCartReducer;

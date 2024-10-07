@@ -9,6 +9,7 @@ import com.dv.repositoties.NguoiDungRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -157,6 +158,19 @@ public class NguoiDungRepositoryImpl implements NguoiDungRepository {
         Session s = this.factory.getObject().getCurrentSession();
         NguoiDung nd = this.getNguoiDungById(id);
         s.delete(nd);
+    }
+
+    @Override
+    public NguoiDung getUserByUsername(String username) {
+        Session s = this.factory.getObject().getCurrentSession();
+        org.hibernate.query.Query query = s.createQuery("FROM NguoiDung WHERE username = :username");
+        query.setParameter("username", username);
+        try {
+            return (NguoiDung) query.getSingleResult();
+        } catch (NoResultException e) {
+            // Log the exception if needed
+            return null; // Or handle it in a way that suits your application
+        }
     }
 
 }

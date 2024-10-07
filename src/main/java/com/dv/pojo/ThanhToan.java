@@ -47,14 +47,14 @@ public class ThanhToan implements Serializable {
     private Integer id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Column(name = "so_tien")
     private BigDecimal soTien;
     @Column(name = "ngay_thanh_toan")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ngayThanhToan;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Size(min = 1, max = 6)
     @Column(name = "hinh_thuc_thanh_toan")
     private String hinhThucThanhToan;

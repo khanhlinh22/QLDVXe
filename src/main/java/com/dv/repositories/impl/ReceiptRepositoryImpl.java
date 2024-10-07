@@ -53,9 +53,8 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
     private LocalSessionFactoryBean factory;
 
     @Override
-  
     public void addReceipt(List<Cart> carts) {
-     System.out.println("Received carts: " + carts);
+        System.out.println("Received carts: " + carts);
         if (carts == null || carts.isEmpty()) {
             System.out.println("Không có giỏ hàng nào để xử lý.");
             return; // Không có giỏ hàng nào để xử lý
@@ -64,12 +63,10 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
         Session session = this.factory.getObject().getCurrentSession();
 
         // Retrieve the current user
-        NguoiDung currentUser = nguoiDungRepo.getNguoiDungByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        NguoiDung currentUser = nguoiDungRepo.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         if (currentUser == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Người dùng không tồn tại");
         }
-
-        // Retrieve the customer
         KhachHang khachHang = khachHangRepo.getKhachHangById(currentUser.getId());
         if (khachHang == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Khách hàng không tồn tại");
@@ -82,10 +79,14 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tuyến xe không hợp lệ");
             }
 
+            // Lấy thông tin chuyến xe dựa trên ID
             ChuyenXe chuyenXe = chuyenXeRepo.getChuyenXeById(cart.getChuyenXeId());
             if (chuyenXe == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Chuyến xe không hợp lệ");
             }
+
+            // Lấy giá vé từ chuyến xe
+            BigDecimal giaVe = chuyenXe.getGiaVe(); // Giá vé từ chuyến xe
 
             // Create a new booking record
             DatVe datVe = new DatVe();
@@ -95,17 +96,21 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
             datVe.setChuyenXeDvId(chuyenXe);
             datVe.setKhachHangId(khachHang);
             datVe.setTuyenXeDvId(tuyenXe);
+            // Không cần gán giá vé vào datVe
 
             // Save the booking
             session.save(datVe);
 
+            // Calculate the total payment amount
+            BigDecimal totalAmount = giaVe.multiply(BigDecimal.valueOf(cart.getSoChoDat())); // Sử dụng giá vé từ chuyến xe
+
             // Create payment record if necessary
-            if (cart.getGiaVe() != null && cart.getSoChoDat() > 0) {
+            if (totalAmount.compareTo(BigDecimal.ZERO) > 0) {
                 ThanhToan thanhToan = new ThanhToan();
-                thanhToan.setSoTien(cart.getGiaVe());
+                thanhToan.setSoTien(totalAmount); // Set the total amount based on the cart
                 thanhToan.setHinhThucThanhToan(cart.getHinhThucThanhToan());
                 thanhToan.setNgayThanhToan(new Date());
-                thanhToan.setDatVeId(datVe); // Sửa lại để tham chiếu đúng đến datVe
+                thanhToan.setDatVeId(datVe); // Associate payment with the booking
 
                 // Save the payment record
                 session.save(thanhToan);
@@ -118,6 +123,6 @@ public class ReceiptRepositoryImpl implements ReceiptRepository {
         }
 
         session.flush(); // Ensure everything is saved
-    }}
+    }
 
-
+}

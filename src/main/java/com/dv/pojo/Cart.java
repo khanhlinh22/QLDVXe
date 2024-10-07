@@ -17,24 +17,28 @@ public class Cart{
     private String name;
     private int soChoDat;
     private String trangThai;
-    private BigDecimal giaVe;
+//    private BigDecimal giaVe;
+    private BigDecimal soTien;
     private String hinhThucThanhToan;
     private int tuyenXeId;
     private int chuyenXeId;
+    private int khachHangId;
     
      public Cart() {
     }
 
 
-    public Cart(int id, String name, String trangThai, int soChoDat, BigDecimal giaVe, String hinhThucThanhToan, int tuyenXeId, int chuyenXeId) {
+    public Cart(int id, String name, String trangThai, int soChoDat, BigDecimal giaVe, BigDecimal soTien, String hinhThucThanhToan, int tuyenXeId, int chuyenXeId, int khachHangId) {
         this.id = id;
         this.name =  name;
         this.trangThai=trangThai;
         this.soChoDat=soChoDat;
-        this.giaVe=giaVe;
+//        this.giaVe=giaVe;
+        this.soTien=soTien;
         this.hinhThucThanhToan=hinhThucThanhToan;
         this.tuyenXeId=tuyenXeId;
         this.chuyenXeId=chuyenXeId;
+        this.khachHangId=khachHangId;
     }
 
     /**
@@ -83,16 +87,16 @@ public class Cart{
     /**
      * @return the soTien
      */
-    public BigDecimal getGiaVe() {
-        return giaVe;
-    }
-
-    /**
-     * @param giaVe the soTien to set
-     */
-    public void setGiaVe(BigDecimal giaVe) {
-        this.giaVe = giaVe;
-    }
+//    public BigDecimal getGiaVe() {
+//        return giaVe;
+//    }
+//
+//    /**
+//     * @param giaVe the soTien to set
+//     */
+//    public void setGiaVe(BigDecimal giaVe) {
+//        this.giaVe = giaVe;
+//    }
 
     /**
      * @return the hinhThucThanhToan
@@ -148,6 +152,34 @@ public class Cart{
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the khachHangId
+     */
+    public int getKhachHangId() {
+        return khachHangId;
+    }
+
+    /**
+     * @param khachHangId the khachHangId to set
+     */
+    public void setKhachHangId(int khachHangId) {
+        this.khachHangId = khachHangId;
+    }
+
+    /**
+     * @return the soTien
+     */
+    public BigDecimal getSoTien() {
+        return soTien;
+    }
+
+    /**
+     * @param soTien the soTien to set
+     */
+    public void setSoTien(BigDecimal soTien) {
+        this.soTien = soTien;
     }
 
     
